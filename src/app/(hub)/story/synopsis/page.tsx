@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { parseSynopsis } from "@/lib/synopsis";
 
 export const metadata: Metadata = {
   title: "Synopsis — Parallel",
@@ -13,17 +15,18 @@ function readSynopsis(): string {
   return fs.readFileSync(filePath, "utf8");
 }
 
-function paragraphs(raw: string): string[] {
-  return raw
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .replace(/\r\n/g, "\n")
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+// Renders inline "*italic*" markup within a block of text as <em> spans.
+function renderInline(text: string, keyPrefix: string): ReactNode[] {
+  return text.split(/(\*[^*]+\*)/g).map((part, i) => {
+    if (part.length > 2 && part.startsWith("*") && part.endsWith("*")) {
+      return <em key={`${keyPrefix}-${i}`}>{part.slice(1, -1)}</em>;
+    }
+    return part;
+  });
 }
 
 export default function SynopsisPage() {
-  const blocks = paragraphs(readSynopsis());
+  const blocks = parseSynopsis(readSynopsis());
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-2xl px-5 py-10 sm:px-10 sm:py-16">
@@ -37,11 +40,23 @@ export default function SynopsisPage() {
       <h1 className="mt-8 font-display text-3xl text-ink sm:text-4xl">Synopsis</h1>
 
       <article className="mt-8 font-serif-body text-base leading-8 text-ink sm:text-lg">
-        {blocks.map((p, i) => (
-          <p key={i} className="mt-4 whitespace-pre-line first:mt-0">
-            {p}
-          </p>
-        ))}
+        {blocks.map((block, i) => {
+          if (block.type === "divider") {
+            return <hr key={i} className="my-8 border-t border-stone/30" />;
+          }
+          if (block.type === "heading") {
+            return (
+              <h2 key={i} className="mt-8 font-display text-xl not-italic text-ink first:mt-0">
+                {renderInline(block.text, `h${i}`)}
+              </h2>
+            );
+          }
+          return (
+            <p key={i} className="mt-4 whitespace-pre-line first:mt-0">
+              {renderInline(block.text, `p${i}`)}
+            </p>
+          );
+        })}
       </article>
     </main>
   );
