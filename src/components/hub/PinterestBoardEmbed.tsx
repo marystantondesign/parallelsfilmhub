@@ -27,7 +27,21 @@ declare global {
   }
 }
 
-export default function PinterestBoardEmbed({ boardUrl }: { boardUrl: string }) {
+// Pinterest's board widget has no "max rows" option - it lays out every
+// pin in one tall grid. To show only a handful of rows as a teaser, we clip
+// the rendered height with an estimated pixel value and fade the cut edge
+// so it reads as an intentional preview rather than a broken cutoff. The
+// estimate assumes a roughly 1.4 average pin aspect ratio at this widget's
+// column width (~230px across every breakpoint here); real boards vary, so
+// treat `previewRows` as approximate and adjust visually if needed.
+const ROW_HEIGHT_ESTIMATE = 320;
+const ROW_GAP_ESTIMATE = 14;
+
+function estimateMaxHeight(rows: number): number {
+  return rows * ROW_HEIGHT_ESTIMATE + (rows - 1) * ROW_GAP_ESTIMATE;
+}
+
+export default function PinterestBoardEmbed({ boardUrl, previewRows }: { boardUrl: string; previewRows?: number }) {
   const [breakpoint, setBreakpoint] = useState<Breakpoint>(BREAKPOINTS[0]);
   const [scriptReady, setScriptReady] = useState(false);
 
@@ -46,20 +60,31 @@ export default function PinterestBoardEmbed({ boardUrl }: { boardUrl: string }) 
     if (scriptReady) window.PinUtils?.build();
   }, [breakpoint.columns, scriptReady]);
 
+  const grid = (
+    <div className="flex justify-center">
+      <a
+        key={breakpoint.columns}
+        data-pin-do="embedBoard"
+        data-pin-board-width={breakpoint.width}
+        data-pin-scale-height="240"
+        href={boardUrl}
+      >
+        {boardUrl}
+      </a>
+    </div>
+  );
+
   return (
     <>
       <Script src="https://assets.pinterest.com/js/pinit.js" strategy="afterInteractive" onLoad={() => setScriptReady(true)} />
-      <div className="flex justify-center">
-        <a
-          key={breakpoint.columns}
-          data-pin-do="embedBoard"
-          data-pin-board-width={breakpoint.width}
-          data-pin-scale-height="240"
-          href={boardUrl}
-        >
-          {boardUrl}
-        </a>
-      </div>
+      {previewRows ? (
+        <div className="relative overflow-hidden" style={{ maxHeight: estimateMaxHeight(previewRows) }}>
+          {grid}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-paper to-transparent" />
+        </div>
+      ) : (
+        grid
+      )}
     </>
   );
 }

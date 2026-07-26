@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { DocumentIcon, ExternalLinkIcon, GlobeIcon, PhoneIcon } from "@/components/hub/icons";
+import PinterestBoardEmbed from "@/components/hub/PinterestBoardEmbed";
+import { PINTEREST_BOARD_URL } from "@/lib/pinterest";
 
 // TODO(marketing): swap to the real marketing site URL once it's live (or
 // keep this pointing at the in-repo placeholder /marketing page). Either
@@ -91,6 +93,10 @@ export default function HubHome() {
           );
         })}
       </nav>
+
+      <div className="mt-10 sm:mt-12">
+        <PinterestBoardEmbed boardUrl={PINTEREST_BOARD_URL} previewRows={5} />
+      </div>
     </main>
   );
 }
