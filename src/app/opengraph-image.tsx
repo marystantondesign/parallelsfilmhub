@@ -14,15 +14,15 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0b0a09",
-          color: "#f3efe6",
+          background: "#f0e7d6",
+          color: "#0a0a0a",
         }}
       >
         <div style={{ fontSize: 104, fontFamily: "serif" }}>Parallel</div>
         <div
           style={{
             fontSize: 28,
-            color: "#a49b8a",
+            color: "#878286",
             marginTop: 20,
             letterSpacing: 6,
             textTransform: "uppercase",

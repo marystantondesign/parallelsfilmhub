@@ -1,4 +1,13 @@
-import { Fascinate, Gilda_Display, Newsreader, Public_Sans, JetBrains_Mono, Schibsted_Grotesk, Inter } from "next/font/google";
+import {
+  Fascinate,
+  Gilda_Display,
+  Newsreader,
+  Public_Sans,
+  JetBrains_Mono,
+  Schibsted_Grotesk,
+  Inter,
+  Courier_Prime,
+} from "next/font/google";
 
 export const fascinate = Fascinate({
   subsets: ["latin"],
@@ -50,6 +59,14 @@ export const inter = Inter({
   display: "swap",
 });
 
+export const courierPrime = Courier_Prime({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-courier-prime",
+  display: "swap",
+});
+
 export const fontVariables = [
   fascinate.variable,
   gildaDisplay.variable,
@@ -58,4 +75,5 @@ export const fontVariables = [
   jetBrainsMono.variable,
   schibstedGrotesk.variable,
   inter.variable,
+  courierPrime.variable,
 ].join(" ");

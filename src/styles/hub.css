@@ -1,25 +1,34 @@
 /*
- * Scoped Tailwind entry point for the hub, screenplay, and app-design pages.
- * Preflight (Tailwind's base reset) is intentionally left out so importing
- * this file can't change the look of the existing marketing site pages
- * (/marketing, /twins, /dreams, /echoes, /network, /support, /the-app),
- * which ship their own hand-tuned CSS-module reset in globals.css.
+ * Scoped Tailwind entry point for the hub, screenplay, app-design, and
+ * moodboard pages. Preflight (Tailwind's base reset) is intentionally left
+ * out so importing this file can't change the look of the existing
+ * marketing site pages (/marketing, /twins, /dreams, /echoes, /network,
+ * /support, /the-app), which ship their own hand-tuned CSS-module reset in
+ * globals.css.
  */
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @theme {
+  /* Headlines / wordmark / card titles */
   --font-display: var(--font-gilda-display), Georgia, serif;
+  /* Supporting/descriptive lines (used italic) */
+  --font-serif-body: var(--font-newsreader), Georgia, serif;
+  /* Labels, CTAs, UI text */
   --font-sans: var(--font-public-sans), -apple-system, sans-serif;
+  /* General monospace/data-style text */
   --font-mono: var(--font-jetbrains-mono), "Courier New", monospace;
+  /* Screenplay reading context only - deliberately distinct from the
+     Gilda Display system above. */
+  --font-screenplay: var(--font-courier-prime), "Courier New", monospace;
 
-  --color-hub-canvas: #0b0a09;
-  --color-hub-surface: #16140f;
-  --color-hub-surface-hover: #1f1c15;
-  --color-hub-border: #2c2820;
-  --color-hub-ink: #f3efe6;
-  --color-hub-muted: #a49b8a;
-  --color-hub-accent: #d3a24b;
+  /* Design-system palette - exact values, no substitutions. */
+  --color-paper: #f0e7d6;
+  --color-butter: #fbf7ba;
+  --color-ink: #0a0a0a;
+  --color-amber: #d88b33;
+  --color-blue: #3868c6;
+  --color-stone: #878286;
 }
 
 .hub-scope {

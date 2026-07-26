@@ -1,44 +1,72 @@
 import Link from "next/link";
+import { DocumentIcon, GlobeIcon, PhoneIcon } from "@/components/hub/icons";
 
 const DESTINATIONS = [
   {
     href: "/screenplay",
     label: "Screenplay",
     description: "Read the script.",
+    badgeClass: "bg-ink",
+    Icon: DocumentIcon,
   },
   {
     href: "/marketing",
     label: "Marketing Site",
     description: "The Parallel product site.",
+    badgeClass: "bg-blue",
+    Icon: GlobeIcon,
   },
   {
     href: "/app-design",
     label: "App Design",
     description: "Screens and visual design.",
+    badgeClass: "bg-amber",
+    Icon: PhoneIcon,
   },
 ];
 
 export default function HubHome() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-6 py-16 sm:max-w-2xl sm:px-10">
-      <div className="flex flex-col items-center text-center">
-        <h1 className="font-display text-5xl tracking-tight text-hub-ink sm:text-6xl">Parallel</h1>
-        <p className="mt-3 text-xs uppercase tracking-[0.2em] text-hub-muted">Best viewed on mobile</p>
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-14 sm:px-10 sm:py-20">
+      <h1 className="text-center font-display text-5xl text-ink sm:text-6xl">Parallel</h1>
+
+      {/* Desktop-only note; irrelevant once you're already on a phone. */}
+      <div className="mt-6 hidden justify-end sm:flex">
+        <span className="rounded-full bg-ink px-4 py-2 font-sans text-sm text-paper">Best viewed on mobile</span>
       </div>
 
-      <nav aria-label="Destinations" className="mt-12 flex flex-col gap-4 sm:mt-16 sm:grid sm:grid-cols-3 sm:gap-5">
-        {DESTINATIONS.map((d) => (
-          <Link
-            key={d.href}
-            href={d.href}
-            className="group flex min-h-[6.5rem] flex-col justify-center gap-1 rounded-2xl border border-hub-border bg-hub-surface px-6 py-5 transition-colors hover:bg-hub-surface-hover hover:border-hub-accent/60 active:bg-hub-surface-hover sm:min-h-[10rem] sm:text-center"
-          >
-            <span className="font-display text-2xl text-hub-ink sm:text-xl">{d.label}</span>
-            <span className="text-sm text-hub-muted transition-colors group-hover:text-hub-ink/80">
-              {d.description}
-            </span>
-          </Link>
-        ))}
+      <nav aria-label="Destinations" className="mt-6 flex flex-col gap-4 sm:mt-4 sm:grid sm:grid-cols-3 sm:gap-6">
+        {DESTINATIONS.map((d) => {
+          const isAppDesign = d.href === "/app-design";
+          return (
+            <Link
+              key={d.href}
+              href={d.href}
+              className="group relative flex min-h-[6rem] flex-row items-center gap-4 rounded-xl border border-stone/40 bg-butter p-5 text-left transition-shadow hover:shadow-[0_6px_20px_-8px_rgba(10,10,10,0.25)] sm:min-h-[15rem] sm:flex-col sm:items-center sm:gap-3 sm:p-8 sm:text-center"
+            >
+              {isAppDesign && (
+                <span className="group/tooltip absolute right-3 top-3 hidden sm:inline-flex">
+                  <PhoneIcon className="h-4 w-4 text-stone" />
+                  <span className="pointer-events-none absolute right-0 top-6 z-10 whitespace-nowrap rounded-md bg-ink px-2 py-1 font-sans text-[11px] text-paper opacity-0 transition-opacity group-hover/tooltip:opacity-100">
+                    Best viewed on mobile
+                  </span>
+                </span>
+              )}
+
+              <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full sm:h-16 sm:w-16 ${d.badgeClass}`}>
+                <d.Icon className="h-6 w-6 text-white sm:h-7 sm:w-7" />
+              </span>
+
+              <span className="flex flex-1 flex-col sm:items-center">
+                <span className="font-display text-xl text-ink sm:text-2xl">{d.label}</span>
+                <span className="mt-0.5 font-serif-body text-sm italic text-stone sm:mt-2">{d.description}</span>
+                <span className="mt-3 hidden items-center gap-1 font-sans text-xs uppercase tracking-[0.15em] text-ink sm:inline-flex">
+                  Enter <span aria-hidden="true">→</span>
+                </span>
+              </span>
+            </Link>
+          );
+        })}
       </nav>
     </main>
   );
