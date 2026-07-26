@@ -5,23 +5,23 @@ import type { Metadata } from "next";
 import { extractTitlePage, parseScreenplay } from "@/lib/screenplay";
 
 export const metadata: Metadata = {
-  title: "Screenplay — Parallel",
-  description: "Read the Parallel screenplay.",
+  title: "Script — Parallel",
+  description: "Read the Parallel script.",
 };
 
 function readScreenplay(): string {
-  const filePath = path.join(process.cwd(), "content", "screenplay.md");
+  const filePath = path.join(process.cwd(), "content", "story", "script.md");
   return fs.readFileSync(filePath, "utf8");
 }
 
-export default function ScreenplayPage() {
+export default function ScriptPage() {
   const { titlePage, body } = extractTitlePage(readScreenplay());
   const elements = parseScreenplay(body);
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-2xl px-5 py-10 sm:px-10 sm:py-16">
       <Link
-        href="/"
+        href="/story"
         className="inline-flex min-h-11 items-center text-sm text-stone transition-colors hover:text-ink"
       >
         ← Back

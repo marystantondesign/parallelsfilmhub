@@ -13,7 +13,10 @@ export type TitlePage = {
 };
 
 function isAllCaps(line: string): boolean {
-  const letters = line.replace(/[^A-Za-z]/g, "");
+  // Ignore decade tokens like "1930s" - the trailing lowercase "s" doesn't
+  // make an otherwise-all-caps slugline/cue stop counting as one.
+  const withoutDecades = line.replace(/\d+s\b/g, "");
+  const letters = withoutDecades.replace(/[^A-Za-z]/g, "");
   return letters.length > 0 && letters === letters.toUpperCase();
 }
 
@@ -22,16 +25,22 @@ const SLUGLINE_RE = /^(INT|EXT|INT\/EXT|I\/E)[.\s]/i;
 // "CLOSE ON: PHONE SCREEN", "BACK TO MILA", "VISION SEQUENCE - ...".
 const SHOT_CUE_RE =
   /^(CLOSE (ON|UP)|ON SCREEN|BACK TO|ANGLE ON|INSERT|WIDE SHOT|VISION SEQUENCE|END VISION SEQUENCE|INTERCUT|MONTAGE|SERIES OF SHOTS|POV)\b/i;
+// Mini interface/scene cues written as "LABEL — DETAIL", e.g.
+// "CHAT — MILA #8", "PHONE — PARALLEL APP", "VISION — 1930s STUDIO".
+const INTERFACE_CUE_RE = /\s[—-]\s/;
 const TRANSITION_RE = /(TO:$|TO BLACK\.?$|^FADE (IN|OUT)\.?:?$)/i;
 
 // A character cue's name may be followed by a parenthetical extension, e.g.
 // "MILA (V.O.)" or "PARALLEL MILA #8 (TEXT - 3 weeks ago)" - only the name
-// portion before the parenthetical needs to be in all caps.
+// portion before the parenthetical needs to be in all caps. A single
+// trailing colon (a chat-label style, e.g. "SISTER:") is stripped before
+// validating rather than rejected outright.
 function characterName(line: string): string | null {
   const match = line.match(/^([^(]+?)\s*(\([^)]*\))?$/);
   if (!match) return null;
-  const namePart = match[1].trim();
+  let namePart = match[1].trim();
   if (!namePart || namePart.length > 60) return null;
+  namePart = namePart.replace(/:$/, "").trim();
   // Reject on-screen UI readouts like "SIMILARITY: 78%" or menus with
   // brackets - these are all caps like a cue but are never followed by
   // dialogue, so treating them as one would misclassify the next block.
@@ -63,6 +72,12 @@ export function parseScreenplay(raw: string): ScreenplayElement[] {
     }
 
     if (singleLine && isAllCaps(singleLine) && SHOT_CUE_RE.test(singleLine)) {
+      elements.push({ type: "heading", text: singleLine });
+      expectingDialogue = false;
+      continue;
+    }
+
+    if (singleLine && isAllCaps(singleLine) && INTERFACE_CUE_RE.test(singleLine)) {
       elements.push({ type: "heading", text: singleLine });
       expectingDialogue = false;
       continue;
