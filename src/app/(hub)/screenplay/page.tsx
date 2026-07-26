@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { parseScreenplay } from "@/lib/screenplay";
+import { extractTitlePage, parseScreenplay } from "@/lib/screenplay";
 
 export const metadata: Metadata = {
   title: "Screenplay — Parallel",
@@ -15,7 +15,8 @@ function readScreenplay(): string {
 }
 
 export default function ScreenplayPage() {
-  const elements = parseScreenplay(readScreenplay());
+  const { titlePage, body } = extractTitlePage(readScreenplay());
+  const elements = parseScreenplay(body);
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-2xl px-5 py-10 sm:px-10 sm:py-16">
@@ -26,7 +27,15 @@ export default function ScreenplayPage() {
         ← Back
       </Link>
 
-      <article className="mt-8 font-mono text-[15px] leading-7 text-hub-ink sm:text-base">
+      {(titlePage.title || titlePage.byline) && (
+        <div className="mt-10 flex flex-col items-center text-center font-mono text-hub-ink">
+          {titlePage.title && <h1 className="text-2xl uppercase tracking-wide">{titlePage.title}</h1>}
+          {titlePage.subtitle && <p className="mt-2 text-sm italic text-hub-muted">{titlePage.subtitle}</p>}
+          {titlePage.byline && <p className="mt-4 text-sm text-hub-muted">{titlePage.byline}</p>}
+        </div>
+      )}
+
+      <article className="mt-10 font-mono text-[15px] leading-7 text-hub-ink sm:text-base">
         {elements.map((el, i) => {
           switch (el.type) {
             case "heading":

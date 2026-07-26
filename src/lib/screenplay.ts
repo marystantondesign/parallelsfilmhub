@@ -6,17 +6,44 @@ export type ScreenplayElement =
   | { type: "transition"; text: string }
   | { type: "action"; text: string };
 
+export type TitlePage = {
+  title: string | null;
+  subtitle: string | null;
+  byline: string | null;
+};
+
 function isAllCaps(line: string): boolean {
   const letters = line.replace(/[^A-Za-z]/g, "");
   return letters.length > 0 && letters === letters.toUpperCase();
 }
 
-const HEADING_RE = /^(INT|EXT|INT\/EXT|I\/E)[.\s]/i;
-const TRANSITION_RE = /(TO:$|^FADE IN\.?$|^FADE OUT\.?$)/i;
+const SLUGLINE_RE = /^(INT|EXT|INT\/EXT|I\/E)[.\s]/i;
+// Mini scene/shot cues (not full sluglines) that read as their own beat, e.g.
+// "CLOSE ON: PHONE SCREEN", "BACK TO MILA", "VISION SEQUENCE - ...".
+const SHOT_CUE_RE =
+  /^(CLOSE (ON|UP)|ON SCREEN|BACK TO|ANGLE ON|INSERT|WIDE SHOT|VISION SEQUENCE|END VISION SEQUENCE|INTERCUT|MONTAGE|SERIES OF SHOTS|POV)\b/i;
+const TRANSITION_RE = /(TO:$|TO BLACK\.?$|^FADE (IN|OUT)\.?:?$)/i;
+
+// A character cue's name may be followed by a parenthetical extension, e.g.
+// "MILA (V.O.)" or "PARALLEL MILA #8 (TEXT - 3 weeks ago)" - only the name
+// portion before the parenthetical needs to be in all caps.
+function characterName(line: string): string | null {
+  const match = line.match(/^([^(]+?)\s*(\([^)]*\))?$/);
+  if (!match) return null;
+  const namePart = match[1].trim();
+  if (!namePart || namePart.length > 60) return null;
+  // Reject on-screen UI readouts like "SIMILARITY: 78%" or menus with
+  // brackets - these are all caps like a cue but are never followed by
+  // dialogue, so treating them as one would misclassify the next block.
+  if (/[:%[\]]/.test(namePart)) return null;
+  if (namePart.split(/\s+/).length > 3) return null;
+  const letters = namePart.replace(/[^A-Za-z]/g, "");
+  if (!letters || letters !== letters.toUpperCase()) return null;
+  return line;
+}
 
 export function parseScreenplay(raw: string): ScreenplayElement[] {
-  const withoutComments = raw.replace(/<!--[\s\S]*?-->/g, "");
-  const blocks = withoutComments
+  const blocks = stripComments(raw)
     .replace(/\r\n/g, "\n")
     .split(/\n\s*\n/)
     .map((b) => b.trim())
@@ -29,7 +56,13 @@ export function parseScreenplay(raw: string): ScreenplayElement[] {
     const lines = block.split("\n").map((l) => l.trim());
     const singleLine = lines.length === 1 ? lines[0] : null;
 
-    if (singleLine && isAllCaps(singleLine) && HEADING_RE.test(singleLine)) {
+    if (singleLine && isAllCaps(singleLine) && SLUGLINE_RE.test(singleLine)) {
+      elements.push({ type: "heading", text: singleLine });
+      expectingDialogue = false;
+      continue;
+    }
+
+    if (singleLine && isAllCaps(singleLine) && SHOT_CUE_RE.test(singleLine)) {
       elements.push({ type: "heading", text: singleLine });
       expectingDialogue = false;
       continue;
@@ -47,7 +80,7 @@ export function parseScreenplay(raw: string): ScreenplayElement[] {
       continue;
     }
 
-    if (singleLine && singleLine.length <= 40 && isAllCaps(singleLine)) {
+    if (singleLine && characterName(singleLine)) {
       elements.push({ type: "character", text: singleLine });
       expectingDialogue = true;
       continue;
@@ -63,4 +96,45 @@ export function parseScreenplay(raw: string): ScreenplayElement[] {
   }
 
   return elements;
+}
+
+function stripComments(raw: string): string {
+  return raw.replace(/<!--[\s\S]*?-->/g, "");
+}
+
+// Optional title page: a leading "# Title" line, an optional "*subtitle*"
+// line right after it, and an optional "Written by ..." byline line. Any of
+// the three may be omitted. Everything else is passed through to the parser.
+export function extractTitlePage(raw: string): { titlePage: TitlePage; body: string } {
+  const lines = stripComments(raw).replace(/\r\n/g, "\n").split("\n");
+  let i = 0;
+  const skipBlank = () => {
+    while (i < lines.length && lines[i].trim() === "") i++;
+  };
+
+  let title: string | null = null;
+  let subtitle: string | null = null;
+  let byline: string | null = null;
+
+  skipBlank();
+  if (lines[i]?.trim().startsWith("# ")) {
+    title = lines[i].trim().slice(2).trim();
+    i++;
+  }
+
+  skipBlank();
+  const subtitleMatch = lines[i]?.trim().match(/^\*(.+)\*$/);
+  if (subtitleMatch) {
+    subtitle = subtitleMatch[1].trim();
+    i++;
+  }
+
+  skipBlank();
+  if (/^written by/i.test(lines[i]?.trim() ?? "")) {
+    byline = lines[i].trim();
+    i++;
+  }
+
+  skipBlank();
+  return { titlePage: { title, subtitle, byline }, body: lines.slice(i).join("\n") };
 }
