@@ -1,0 +1,74 @@
+import fs from "node:fs";
+import path from "node:path";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { parseScreenplay } from "@/lib/screenplay";
+
+export const metadata: Metadata = {
+  title: "Screenplay — Parallel",
+  description: "Read the Parallel screenplay.",
+};
+
+function readScreenplay(): string {
+  const filePath = path.join(process.cwd(), "content", "screenplay.md");
+  return fs.readFileSync(filePath, "utf8");
+}
+
+export default function ScreenplayPage() {
+  const elements = parseScreenplay(readScreenplay());
+
+  return (
+    <main className="mx-auto min-h-screen w-full max-w-2xl px-5 py-10 sm:px-10 sm:py-16">
+      <Link
+        href="/"
+        className="inline-flex min-h-11 items-center text-sm text-hub-muted transition-colors hover:text-hub-ink"
+      >
+        ← Back
+      </Link>
+
+      <article className="mt-8 font-mono text-[15px] leading-7 text-hub-ink sm:text-base">
+        {elements.map((el, i) => {
+          switch (el.type) {
+            case "heading":
+              return (
+                <p key={i} className="mt-8 mb-2 font-bold uppercase tracking-wide first:mt-0">
+                  {el.text}
+                </p>
+              );
+            case "transition":
+              return (
+                <p key={i} className="mt-6 mb-2 text-right uppercase text-hub-muted">
+                  {el.text}
+                </p>
+              );
+            case "character":
+              return (
+                <p key={i} className="mt-6 text-center uppercase">
+                  {el.text}
+                </p>
+              );
+            case "parenthetical":
+              return (
+                <p key={i} className="mx-auto max-w-xs text-center italic text-hub-muted">
+                  {el.text}
+                </p>
+              );
+            case "dialogue":
+              return (
+                <p key={i} className="mx-auto mt-1 mb-2 max-w-sm whitespace-pre-line text-center sm:text-left">
+                  {el.text}
+                </p>
+              );
+            case "action":
+            default:
+              return (
+                <p key={i} className="mt-4 whitespace-pre-line first:mt-0">
+                  {el.text}
+                </p>
+              );
+          }
+        })}
+      </article>
+    </main>
+  );
+}

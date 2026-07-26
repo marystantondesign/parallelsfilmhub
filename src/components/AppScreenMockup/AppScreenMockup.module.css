@@ -1,0 +1,217 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  width: 393px;
+  height: 858px;
+  flex-shrink: 0;
+  border-radius: 25px;
+  background: #f9fafb;
+  overflow: hidden;
+  font-family: var(--font-family-inter);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: 62px;
+  padding: 0 16px;
+  background: #bedbff;
+}
+
+.headerIcon {
+  width: 22px;
+  height: 24px;
+  border-radius: 50%;
+  background: #d1d5dc;
+}
+
+.wordmark {
+  font-family: var(--font-family-gilda-display);
+  font-size: 26px;
+  color: #101828;
+  margin: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  min-height: 0;
+  gap: 16px;
+  padding: 10px 16px 16px;
+  overflow: hidden;
+}
+
+.greetingRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.greetingLine {
+  font-size: 16px;
+  color: #6a7282;
+  margin: 0;
+}
+
+.greetingName {
+  font-size: 30px;
+  font-weight: 700;
+  color: #101828;
+  margin: 0;
+}
+
+.greetingSub {
+  font-size: 14px;
+  color: #99a1af;
+  margin: 4px 0 0;
+}
+
+.dateBlock {
+  text-align: right;
+  font-size: 14px;
+  color: #99a1af;
+}
+
+.dateBlock p {
+  margin: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #99a1af;
+  margin: 0;
+}
+
+.cardLink {
+  font-size: 12px;
+  color: #99a1af;
+  margin: 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #99a1af;
+  margin: 0;
+}
+
+.statValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e2939;
+  margin: 0;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 13px;
+  border-radius: 14px;
+  border: 1px solid #f3f4f6;
+  background: #f9fafb;
+}
+
+.insightList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.insightRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.insightDot {
+  flex-shrink: 0;
+  width: 4px;
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: #d1d5dc;
+}
+
+.insightText {
+  font-size: 14px;
+  line-height: 22.75px;
+  color: #4a5565;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  flex-shrink: 0;
+  padding-bottom: 16px;
+  border-top: 1px solid #e5e7eb;
+  background: white;
+}
+
+.navItem {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0;
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #d1d5dc;
+}
+
+.navLabel {
+  font-size: 10px;
+  letter-spacing: 0.24px;
+  color: #99a1af;
+  margin: 0;
+}
+
+.navLabelActive {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24px;
+  color: #101828;
+  margin: 0;
+}

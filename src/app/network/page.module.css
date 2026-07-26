@@ -1,0 +1,282 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: var(--color-bg-canvas);
+}
+
+/* Page header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 120px 120px 96px;
+}
+
+.eyebrow {
+  font-family: var(--text-ui-eyebrow-font-family);
+  font-size: var(--text-ui-eyebrow-font-size);
+  letter-spacing: var(--text-ui-eyebrow-letter-spacing);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.headline {
+  font-family: var(--text-display-l-font-family);
+  font-weight: var(--text-display-l-font-weight);
+  font-size: var(--text-display-l-font-size);
+  line-height: var(--text-display-l-line-height);
+  letter-spacing: -0.28px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.dek {
+  font-family: var(--text-body-large-font-family);
+  font-size: var(--text-body-large-font-size);
+  line-height: var(--text-body-large-line-height);
+  color: var(--color-text-secondary);
+  width: 760px;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Banner */
+.banner {
+  width: 100%;
+  height: 720px;
+  background: var(--color-bg-sunken);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--text-mono-meta-font-family);
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Scope */
+.scope {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 96px 120px 0;
+}
+
+.scopeRow {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+.panel {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.14);
+}
+
+.panelTitle {
+  font-family: var(--text-heading-3-font-family);
+  font-weight: var(--text-heading-3-font-weight);
+  font-size: var(--text-heading-3-font-size);
+  line-height: var(--text-heading-3-line-height);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.panelList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.panelItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.panelMark {
+  flex-shrink: 0;
+  width: 5px;
+  height: 14px;
+  margin-top: 6px;
+  border-radius: 2px;
+  background: var(--color-text-muted);
+}
+
+.panelItemText {
+  flex: 1 0 0;
+  min-width: 0;
+  font-family: var(--text-body-default-font-family);
+  font-size: var(--text-body-default-font-size);
+  line-height: var(--text-body-default-line-height);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Generations */
+.generations {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  padding: 96px 120px;
+}
+
+.generationsHeading {
+  font-family: var(--text-heading-2-font-family);
+  font-weight: var(--text-heading-2-font-weight);
+  font-size: var(--text-heading-2-font-size);
+  line-height: var(--text-heading-2-line-height);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tableHeadRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 18px 0;
+  border-top: 1px solid var(--color-border-default);
+  font-family: var(--text-mono-meta-font-family);
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 18px 0;
+  border-top: 1px solid var(--color-border-default);
+  font-family: var(--text-body-default-font-family);
+  font-size: var(--text-body-default-font-size);
+  line-height: var(--text-body-default-line-height);
+  color: var(--color-text-primary);
+}
+
+.tableCell {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* Network today */
+.networkToday {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  padding: 96px 120px;
+  background: var(--color-bg-inverse);
+}
+
+.networkTodayHeading {
+  font-family: var(--text-heading-2-font-family);
+  font-weight: var(--text-heading-2-font-weight);
+  font-size: var(--text-heading-2-font-size);
+  line-height: var(--text-heading-2-line-height);
+  color: var(--color-text-inverse);
+  margin: 0;
+}
+
+.metrics {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+.metric {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metricValue {
+  font-family: var(--text-display-l-font-family);
+  font-weight: var(--text-display-l-font-weight);
+  font-size: var(--text-display-l-font-size);
+  line-height: var(--text-display-l-line-height);
+  letter-spacing: -0.28px;
+  color: var(--color-text-inverse);
+  margin: 0;
+}
+
+.metricLabel {
+  font-family: var(--text-body-small-font-family);
+  font-size: var(--text-body-small-font-size);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Origins */
+.origins {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding: 96px 120px;
+}
+
+.originsEyebrow {
+  font-family: var(--text-ui-eyebrow-font-family);
+  font-size: var(--text-ui-eyebrow-font-size);
+  letter-spacing: var(--text-ui-eyebrow-letter-spacing);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.originsHeadline {
+  font-family: var(--text-heading-1-font-family);
+  font-weight: var(--text-heading-1-font-weight);
+  font-size: var(--text-heading-1-font-size);
+  line-height: var(--text-heading-1-line-height);
+  color: var(--color-text-primary);
+  margin: 0;
+  width: 820px;
+  max-width: 100%;
+}
+
+.originsBody {
+  font-family: var(--text-editorial-body-font-family);
+  font-size: var(--text-editorial-body-font-size);
+  line-height: var(--text-editorial-body-line-height);
+  color: var(--color-text-secondary);
+  width: 820px;
+  max-width: 100%;
+  margin: 0;
+}
+
+.originsQuote {
+  font-family: var(--text-editorial-quote-font-family);
+  font-style: var(--text-editorial-quote-font-style);
+  font-size: var(--text-editorial-quote-font-size);
+  line-height: var(--text-editorial-quote-line-height);
+  color: var(--color-text-primary);
+  width: 820px;
+  max-width: 100%;
+  margin: 0;
+}

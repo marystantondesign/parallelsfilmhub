@@ -1,0 +1,40 @@
+/*
+ * Scoped Tailwind entry point for the hub, screenplay, and app-design pages.
+ * Preflight (Tailwind's base reset) is intentionally left out so importing
+ * this file can't change the look of the existing marketing site pages
+ * (/marketing, /twins, /dreams, /echoes, /network, /support, /the-app),
+ * which ship their own hand-tuned CSS-module reset in globals.css.
+ */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --font-display: var(--font-gilda-display), Georgia, serif;
+  --font-sans: var(--font-public-sans), -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "Courier New", monospace;
+
+  --color-hub-canvas: #0b0a09;
+  --color-hub-surface: #16140f;
+  --color-hub-surface-hover: #1f1c15;
+  --color-hub-border: #2c2820;
+  --color-hub-ink: #f3efe6;
+  --color-hub-muted: #a49b8a;
+  --color-hub-accent: #d3a24b;
+}
+
+.hub-scope {
+  box-sizing: border-box;
+}
+.hub-scope *,
+.hub-scope *::before,
+.hub-scope *::after {
+  box-sizing: inherit;
+}
+.hub-scope img {
+  max-width: 100%;
+  display: block;
+}
+.hub-scope a {
+  color: inherit;
+  text-decoration: none;
+}

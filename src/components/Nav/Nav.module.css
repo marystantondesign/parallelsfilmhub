@@ -1,0 +1,51 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 120px;
+  background: var(--color-bg-inverse);
+  border-bottom: 1px solid var(--color-signal-degraded);
+}
+
+.wordmark {
+  display: block;
+  font-family: var(--text-mono-body-font-family);
+  font-size: 36px;
+  line-height: 18px;
+  letter-spacing: 5.4px;
+  text-transform: uppercase;
+  color: var(--color-brand-gold);
+  text-decoration: none;
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.link {
+  font-family: var(--text-body-small-font-family);
+  font-size: var(--text-body-small-font-size);
+  color: var(--color-text-inverse);
+  white-space: nowrap;
+}
+
+.linkStatic {
+  font-family: var(--text-body-small-font-family);
+  font-size: var(--text-body-small-font-size);
+  color: var(--color-text-inverse);
+  white-space: nowrap;
+  margin: 0;
+}
+
+.download {
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  font-family: var(--text-body-small-font-family);
+  font-size: var(--text-body-small-font-size);
+  color: var(--color-text-inverse);
+}

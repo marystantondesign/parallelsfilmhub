@@ -1,0 +1,215 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: var(--color-bg-canvas);
+}
+
+/* Page header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 120px 120px 96px;
+}
+
+.lede {
+  font-family: var(--text-heading-2-font-family);
+  font-weight: var(--text-heading-2-font-weight);
+  font-size: 36px;
+  line-height: 40px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.lede p {
+  margin: 0 0 24px;
+}
+
+.lede p:last-child {
+  margin-bottom: 0;
+}
+
+.ledeEmphasis {
+  font-family: var(--font-family-schibsted-grotesk);
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: -1.4px;
+}
+
+.subhead {
+  font-family: var(--text-heading-2-font-family);
+  font-weight: var(--text-heading-2-font-weight);
+  font-size: 36px;
+  line-height: 62px;
+  letter-spacing: -0.18px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.dek {
+  font-family: var(--text-body-large-font-family);
+  font-size: var(--text-body-large-font-size);
+  line-height: var(--text-body-large-line-height);
+  color: var(--color-text-secondary);
+  width: 720px;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Sections */
+.sections {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 120px 96px;
+}
+
+.sectionsRow {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+.mockupWrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 80px;
+}
+
+.sectionCard {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.sectionVisual {
+  height: 220px;
+  width: 100%;
+  background: var(--color-brand-midnight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--text-mono-meta-font-family);
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 16px;
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+}
+
+.sectionTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionTitle {
+  font-family: var(--text-heading-2-font-family);
+  font-weight: var(--text-heading-2-font-weight);
+  font-size: var(--text-heading-2-font-size);
+  line-height: var(--text-heading-2-line-height);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.betaBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-subtle);
+  font-family: var(--text-mono-meta-font-family);
+  font-weight: var(--text-mono-meta-font-weight);
+  font-size: var(--text-mono-meta-font-size);
+  letter-spacing: var(--text-mono-meta-letter-spacing);
+  text-transform: uppercase;
+  color: var(--color-signal-degraded);
+}
+
+.sectionBody {
+  font-family: var(--text-body-default-font-family);
+  font-size: var(--text-body-default-font-size);
+  line-height: var(--text-body-default-line-height);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.sectionLink {
+  font-family: var(--text-ui-label-font-family);
+  font-weight: var(--text-ui-label-font-weight);
+  font-size: var(--text-ui-label-font-size);
+  line-height: var(--text-ui-label-line-height);
+  margin: 0;
+}
+
+/* Compare */
+.compare {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  padding: 96px 120px;
+  background: var(--color-bg-subtle);
+}
+
+.compareHeading {
+  font-family: var(--text-heading-2-font-family);
+  font-weight: var(--text-heading-2-font-weight);
+  font-size: var(--text-heading-2-font-size);
+  line-height: var(--text-heading-2-line-height);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tableHeadRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 18px 0;
+  border-top: 1px solid var(--color-border-default);
+  font-family: var(--text-mono-meta-font-family);
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 18px 0;
+  border-top: 1px solid var(--color-border-default);
+  font-family: var(--text-body-default-font-family);
+  font-size: var(--text-body-default-font-size);
+  line-height: var(--text-body-default-line-height);
+  color: var(--color-text-primary);
+}
+
+.tableCell {
+  flex: 1 0 0;
+  min-width: 0;
+}
