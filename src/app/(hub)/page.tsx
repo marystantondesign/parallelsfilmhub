@@ -30,12 +30,7 @@ export default function HubHome() {
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-14 sm:px-10 sm:py-20">
       <h1 className="text-center font-display text-5xl text-ink sm:text-6xl">Parallel</h1>
 
-      {/* Desktop-only note; irrelevant once you're already on a phone. */}
-      <div className="mt-6 hidden justify-end sm:flex">
-        <span className="rounded-full bg-ink px-4 py-2 font-sans text-sm text-paper">Best viewed on mobile</span>
-      </div>
-
-      <nav aria-label="Destinations" className="mt-6 flex flex-col gap-4 sm:mt-4 sm:grid sm:grid-cols-3 sm:gap-6">
+      <nav aria-label="Destinations" className="mt-10 flex flex-col gap-4 sm:mt-12 sm:grid sm:grid-cols-3 sm:gap-6">
         {DESTINATIONS.map((d) => {
           const isAppDesign = d.href === "/app-design";
           return (
