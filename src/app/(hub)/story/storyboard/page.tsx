@@ -3,6 +3,7 @@ import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { parseOutline } from "@/lib/outline";
 
 export const metadata: Metadata = {
   title: "Storyboard — Parallel",
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 // TODO(storyboard): drop frames into /public/story/storyboard/
 // (.png/.jpg/.jpeg/.webp), named so they sort in shot order (e.g.
 // 01-int-bedroom.png, 02-phone-app.png, ...). They're auto-discovered and
-// rendered below - no code changes needed.
+// take over the page below - no code changes needed. Until then, the text
+// frame list in content/story/storyboard.md is shown instead.
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp"]);
 
 function readFrames(): string[] {
@@ -25,8 +27,16 @@ function readFrames(): string[] {
     .map((name) => `/story/storyboard/${name}`);
 }
 
+function readFrameList(): string | null {
+  const filePath = path.join(process.cwd(), "content", "story", "storyboard.md");
+  if (!fs.existsSync(filePath)) return null;
+  return fs.readFileSync(filePath, "utf8");
+}
+
 export default function StoryboardPage() {
   const frames = readFrames();
+  const frameListRaw = frames.length === 0 ? readFrameList() : null;
+  const blocks = frameListRaw ? parseOutline(frameListRaw) : null;
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-4xl px-5 py-10 sm:px-10 sm:py-16">
@@ -47,6 +57,32 @@ export default function StoryboardPage() {
             </div>
           ))}
         </div>
+      ) : blocks ? (
+        <article className="mt-8 max-w-2xl font-sans text-base leading-7 text-ink">
+          {blocks.map((block, i) => {
+            if (block.type === "heading") {
+              return (
+                <h2 key={i} className="mt-8 font-display text-xl text-ink first:mt-0">
+                  {block.text}
+                </h2>
+              );
+            }
+            if (block.type === "list") {
+              return (
+                <ul key={i} className="mt-3 list-disc space-y-2 pl-5">
+                  {block.items.map((item, j) => (
+                    <li key={j}>{item}</li>
+                  ))}
+                </ul>
+              );
+            }
+            return (
+              <p key={i} className="mt-3">
+                {block.text}
+              </p>
+            );
+          })}
+        </article>
       ) : (
         <div className="mt-8 rounded-2xl border border-dashed border-stone/50 px-6 py-10 text-center">
           <p className="text-ink">No frames yet.</p>
