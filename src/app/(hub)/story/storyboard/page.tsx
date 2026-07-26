@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { parseOutline } from "@/lib/outline";
+import { OutlineArticle } from "@/components/hub/OutlineArticle";
 
 export const metadata: Metadata = {
   title: "Storyboard — Parallel",
@@ -58,31 +59,7 @@ export default function StoryboardPage() {
           ))}
         </div>
       ) : blocks ? (
-        <article className="mt-8 max-w-2xl font-sans text-base leading-7 text-ink">
-          {blocks.map((block, i) => {
-            if (block.type === "heading") {
-              return (
-                <h2 key={i} className="mt-8 font-display text-xl text-ink first:mt-0">
-                  {block.text}
-                </h2>
-              );
-            }
-            if (block.type === "list") {
-              return (
-                <ul key={i} className="mt-3 list-disc space-y-2 pl-5">
-                  {block.items.map((item, j) => (
-                    <li key={j}>{item}</li>
-                  ))}
-                </ul>
-              );
-            }
-            return (
-              <p key={i} className="mt-3">
-                {block.text}
-              </p>
-            );
-          })}
-        </article>
+        <OutlineArticle blocks={blocks} className="mt-8 max-w-2xl font-sans text-base leading-7 text-ink" />
       ) : (
         <div className="mt-8 rounded-2xl border border-dashed border-stone/50 px-6 py-10 text-center">
           <p className="text-ink">No frames yet.</p>

@@ -2,8 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import { parseSynopsis } from "@/lib/synopsis";
+import { renderInline } from "@/components/hub/inline";
 
 export const metadata: Metadata = {
   title: "Synopsis — Parallel",
@@ -13,16 +13,6 @@ export const metadata: Metadata = {
 function readSynopsis(): string {
   const filePath = path.join(process.cwd(), "content", "story", "synopsis.md");
   return fs.readFileSync(filePath, "utf8");
-}
-
-// Renders inline "*italic*" markup within a block of text as <em> spans.
-function renderInline(text: string, keyPrefix: string): ReactNode[] {
-  return text.split(/(\*[^*]+\*)/g).map((part, i) => {
-    if (part.length > 2 && part.startsWith("*") && part.endsWith("*")) {
-      return <em key={`${keyPrefix}-${i}`}>{part.slice(1, -1)}</em>;
-    }
-    return part;
-  });
 }
 
 export default function SynopsisPage() {

@@ -3,6 +3,7 @@ import path from "node:path";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { parseOutline } from "@/lib/outline";
+import { OutlineArticle } from "@/components/hub/OutlineArticle";
 
 export const metadata: Metadata = {
   title: "Beat Sheet — Parallel",
@@ -28,31 +29,7 @@ export default function BeatSheetPage() {
 
       <h1 className="mt-8 font-display text-3xl text-ink sm:text-4xl">Beat Sheet</h1>
 
-      <article className="mt-8 font-sans text-base leading-7 text-ink">
-        {blocks.map((block, i) => {
-          if (block.type === "heading") {
-            return (
-              <h2 key={i} className="mt-8 font-display text-xl text-ink first:mt-0">
-                {block.text}
-              </h2>
-            );
-          }
-          if (block.type === "list") {
-            return (
-              <ul key={i} className="mt-3 list-disc space-y-2 pl-5">
-                {block.items.map((item, j) => (
-                  <li key={j}>{item}</li>
-                ))}
-              </ul>
-            );
-          }
-          return (
-            <p key={i} className="mt-3">
-              {block.text}
-            </p>
-          );
-        })}
-      </article>
+      <OutlineArticle blocks={blocks} className="mt-8 font-sans text-base leading-7 text-ink" />
     </main>
   );
 }
