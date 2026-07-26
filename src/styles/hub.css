@@ -29,6 +29,10 @@
   --color-amber: #d88b33;
   --color-blue: #3868c6;
   --color-stone: #878286;
+  /* Card/section surface from the latest home page revision - eyeballed
+     from a screenshot, not an exact hex from the source; nudge this if it's
+     off. */
+  --color-gold: #b8860b;
 }
 
 .hub-scope {
