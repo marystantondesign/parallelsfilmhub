@@ -33,6 +33,10 @@
      from a screenshot, not an exact hex from the source; nudge this if it's
      off. */
   --color-gold: #b8860b;
+  /* Story Development tab bar (Figma node 108:692) - active tab fill and
+     the pale border shared by every tab pill. */
+  --color-forest: #0e564a;
+  --color-parchment: #fff5cc;
 }
 
 .hub-scope {

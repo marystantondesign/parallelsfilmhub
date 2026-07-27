@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { parseOutline } from "@/lib/outline";
 import { OutlineArticle } from "@/components/hub/OutlineArticle";
@@ -40,15 +39,8 @@ export default function StoryboardPage() {
   const blocks = frameListRaw ? parseOutline(frameListRaw) : null;
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-4xl px-5 py-10 sm:px-10 sm:py-16">
-      <Link
-        href="/story"
-        className="inline-flex min-h-11 items-center text-sm text-stone transition-colors hover:text-ink"
-      >
-        ← Back
-      </Link>
-
-      <h1 className="mt-8 font-display text-3xl text-ink sm:text-4xl">Storyboard</h1>
+    <div className="mx-auto w-full max-w-4xl">
+      <h1 className="font-display text-3xl text-ink sm:text-4xl">Storyboard</h1>
 
       {frames.length > 0 ? (
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
@@ -69,6 +61,6 @@ export default function StoryboardPage() {
           </p>
         </div>
       )}
-    </main>
+    </div>
   );
 }

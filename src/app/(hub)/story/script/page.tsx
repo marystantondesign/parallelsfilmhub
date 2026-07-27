@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { extractTitlePage, parseScreenplay } from "@/lib/screenplay";
 
@@ -19,16 +18,9 @@ export default function ScriptPage() {
   const elements = parseScreenplay(body);
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-2xl px-5 py-10 sm:px-10 sm:py-16">
-      <Link
-        href="/story"
-        className="inline-flex min-h-11 items-center text-sm text-stone transition-colors hover:text-ink"
-      >
-        ← Back
-      </Link>
-
+    <div className="mx-auto w-full max-w-2xl">
       {(titlePage.title || titlePage.byline) && (
-        <div className="mt-10 flex flex-col items-center text-center font-screenplay text-ink">
+        <div className="flex flex-col items-center text-center font-screenplay text-ink">
           {titlePage.title && <h1 className="text-2xl uppercase tracking-wide">{titlePage.title}</h1>}
           {titlePage.subtitle && <p className="mt-2 text-sm italic text-stone">{titlePage.subtitle}</p>}
           {titlePage.byline && <p className="mt-4 text-sm text-stone">{titlePage.byline}</p>}
@@ -78,6 +70,6 @@ export default function ScriptPage() {
           }
         })}
       </article>
-    </main>
+    </div>
   );
 }
