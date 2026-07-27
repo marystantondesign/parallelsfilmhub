@@ -31,7 +31,7 @@ export default function AppDesignPage() {
   const screenshots = readScreenshots();
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-3xl px-5 pb-10 pt-20 sm:px-10 sm:pb-16">
+    <main className="mx-auto min-h-screen w-full max-w-3xl px-5 pt-20 sm:px-10">
       {screenshots.length > 0 ? (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
           {screenshots.map((src) => (

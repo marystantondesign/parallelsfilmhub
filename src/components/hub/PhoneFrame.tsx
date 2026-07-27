@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// iPhone 15/16 Pro logical viewport size - the embedded page renders at this
-// size regardless of how small the surrounding container gets; we only
-// visually shrink it (via CSS transform) to fit narrow viewports, we never
-// resize the iframe itself, so the embedded design always sees a true phone
-// viewport.
-const FRAME_WIDTH = 393;
-const FRAME_HEIGHT = 853;
+// 90% of the iPhone 15/16 Pro logical viewport size (393x853), so the whole
+// frame fits on a desktop screen without scrolling. The embedded page always
+// renders at this size regardless of how small the surrounding container
+// gets; we only visually shrink it further (via CSS transform) to fit
+// narrower viewports - we never resize the iframe itself.
+const FRAME_WIDTH = 354;
+const FRAME_HEIGHT = 768;
 
 // A filled circle stands in for a fingertip, since the content behind it is
 // a phone screen meant to be tapped, not clicked with an arrow pointer.
@@ -31,7 +31,7 @@ export default function PhoneFrame({ src, title }: { src: string; title: string 
   }, []);
 
   return (
-    <div ref={containerRef} className="mx-auto w-full max-w-[393px]" style={{ height: FRAME_HEIGHT * scale }}>
+    <div ref={containerRef} className="mx-auto w-full max-w-[354px]" style={{ height: FRAME_HEIGHT * scale }}>
       <div
         className="origin-top overflow-hidden rounded-[2.75rem] border-[10px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(10,10,10,0.5)]"
         style={{ width: FRAME_WIDTH, height: FRAME_HEIGHT, transform: `scale(${scale})`, cursor: TOUCH_CURSOR }}
