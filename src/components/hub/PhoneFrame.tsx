@@ -1,14 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 // 90% of the iPhone 15/16 Pro logical viewport size (393x853), so the whole
 // frame fits on a desktop screen without scrolling. The embedded page always
-// renders at this size regardless of how small the surrounding container
+// renders at this size regardless of how small the visiting device's screen
 // gets; we only visually shrink it further (via CSS transform) to fit
 // narrower viewports - we never resize the iframe itself.
 const FRAME_WIDTH = 354;
 const FRAME_HEIGHT = 768;
+
+// Scaled against the true device viewport (not the surrounding page
+// container) so there's always a visible margin around the frame and it
+// stays centered, regardless of what width phone it's opened on.
+const MIN_SIDE_MARGIN = 24;
 
 // A filled circle stands in for a fingertip, since the content behind it is
 // a phone screen meant to be tapped, not clicked with an arrow pointer.
@@ -17,23 +22,24 @@ const TOUCH_CURSOR = `url("data:image/svg+xml,${encodeURIComponent(
 )}") 14 14, pointer`;
 
 export default function PhoneFrame({ src, title }: { src: string; title: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const update = () => setScale(Math.min(1, el.clientWidth / FRAME_WIDTH));
+    const update = () => setScale(Math.min(1, (window.innerWidth - MIN_SIDE_MARGIN * 2) / FRAME_WIDTH));
     update();
-    const observer = new ResizeObserver(update);
-    observer.observe(el);
-    return () => observer.disconnect();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   return (
-    <div ref={containerRef} className="mx-auto w-full max-w-[354px]" style={{ height: FRAME_HEIGHT * scale }}>
+    // A fixed-width child wider than its container can't be centered with
+    // margin:auto (the overflow makes "auto" resolve to 0, so it just
+    // left-aligns) - flex justify-center is what actually keeps it centered,
+    // with the CSS scale() transform then shrinking it around that same
+    // centered anchor.
+    <div className="flex w-full justify-center" style={{ height: FRAME_HEIGHT * scale }}>
       <div
-        className="origin-top overflow-hidden rounded-[2.75rem] border-[10px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(10,10,10,0.5)]"
+        className="origin-top shrink-0 overflow-hidden rounded-[2.75rem] border-[10px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(10,10,10,0.5)]"
         style={{ width: FRAME_WIDTH, height: FRAME_HEIGHT, transform: `scale(${scale})`, cursor: TOUCH_CURSOR }}
       >
         <iframe src={src} title={title} width={FRAME_WIDTH} height={FRAME_HEIGHT} className="block h-full w-full border-0" />
