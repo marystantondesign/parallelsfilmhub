@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-// 90% of the iPhone 15/16 Pro logical viewport size (393x853), so the whole
-// frame fits on a desktop screen without scrolling. The embedded page always
-// renders at this size regardless of how small the visiting device's screen
-// gets; we only visually shrink it further (via CSS transform) to fit
-// narrower viewports - we never resize the iframe itself.
-const FRAME_WIDTH = 354;
-const FRAME_HEIGHT = 768;
+// ~81% of the iPhone 15/16 Pro logical viewport size (393x853) - two 10%
+// shrinks - so the whole frame fits on screen without scrolling, on both
+// desktop and real mobile browsers (whose collapsing address/toolbar chrome
+// eats more effective height than a plain viewport number suggests). The
+// embedded page always renders at this size regardless of how small the
+// visiting device's screen gets; we only visually shrink it further (via CSS
+// transform) to fit narrower viewports - we never resize the iframe itself.
+const FRAME_WIDTH = 319;
+const FRAME_HEIGHT = 691;
 
 // Scaled against the true device viewport (not the surrounding page
 // container) so there's always a visible margin around the frame and it
