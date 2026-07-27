@@ -49,10 +49,10 @@ export default function HubHome() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-14 sm:px-10 sm:py-20">
       <Image
-        src="/parallel-logo.png"
+        src="/parallellogo.png"
         alt="Parallel"
         width={480}
-        height={110}
+        height={181}
         priority
         className="mx-auto h-auto w-64 sm:w-80"
       />
