@@ -33,13 +33,9 @@ export default function PhoneFrame({ src, title }: { src: string; title: string 
   return (
     <div ref={containerRef} className="mx-auto w-full max-w-[393px]" style={{ height: FRAME_HEIGHT * scale }}>
       <div
-        className="relative origin-top overflow-hidden rounded-[2.75rem] border-[10px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(10,10,10,0.5)]"
+        className="origin-top overflow-hidden rounded-[2.75rem] border-[10px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(10,10,10,0.5)]"
         style={{ width: FRAME_WIDTH, height: FRAME_HEIGHT, transform: `scale(${scale})`, cursor: TOUCH_CURSOR }}
       >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-3 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-ink"
-        />
         <iframe src={src} title={title} width={FRAME_WIDTH} height={FRAME_HEIGHT} className="block h-full w-full border-0" />
       </div>
     </div>

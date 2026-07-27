@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import PhoneFrame from "@/components/hub/PhoneFrame";
 
@@ -32,15 +31,9 @@ export default function AppDesignPage() {
   const screenshots = readScreenshots();
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-3xl px-5 py-10 sm:px-10 sm:py-16">
-      <Link href="/" className="inline-flex min-h-11 items-center text-sm text-stone transition-colors hover:text-ink">
-        ← Back
-      </Link>
-
-      <h1 className="mt-8 font-display text-3xl text-ink sm:text-4xl">App Design</h1>
-
+    <main className="mx-auto min-h-screen w-full max-w-3xl px-5 pb-10 pt-20 sm:px-10 sm:pb-16">
       {screenshots.length > 0 ? (
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
           {screenshots.map((src) => (
             <div key={src} className="overflow-hidden rounded-xl border border-stone/40 bg-butter">
               <Image src={src} alt="" width={800} height={1600} className="h-auto w-full" unoptimized />
@@ -48,11 +41,9 @@ export default function AppDesignPage() {
           ))}
         </div>
       ) : EXTERNAL_DESIGN_URL ? (
-        <div className="mt-10">
-          <PhoneFrame src={EXTERNAL_DESIGN_URL} title="Parallel app design" />
-        </div>
+        <PhoneFrame src={EXTERNAL_DESIGN_URL} title="Parallel app design" />
       ) : (
-        <div className="mt-8 rounded-2xl border border-dashed border-stone/50 px-6 py-10 text-center">
+        <div className="rounded-2xl border border-dashed border-stone/50 px-6 py-10 text-center">
           <p className="text-ink">No screens yet.</p>
           <p className="mt-2 text-sm text-stone">
             Drop screenshots into <code className="font-mono text-amber">/public/app-design/</code>, or set{" "}
