@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneIcon } from "@/components/hub/icons";
-import PinterestBoardEmbed, { type Breakpoint } from "@/components/hub/PinterestBoardEmbed";
+import PinterestPinGrid from "@/components/hub/PinterestPinGrid";
 import { PINTEREST_BOARD_URL } from "@/lib/pinterest";
 
 // TODO(marketing): swap to the real marketing site URL once it's live (or
@@ -38,15 +38,6 @@ const DESTINATIONS = [
 
 const CARD_CLASS =
   "flex flex-col items-center gap-1.5 rounded-xl bg-gold p-5 text-center transition-shadow hover:shadow-[0_6px_20px_-8px_rgba(10,10,10,0.35)] sm:p-6";
-
-// Narrower than PinterestBoardEmbed's own defaults, sized to fit inside this
-// page's max-w-5xl column (~944px desktop / down to a phone viewport) so the
-// board doesn't overflow the bordered frame below.
-const BOARD_BREAKPOINTS: Breakpoint[] = [
-  { query: "(min-width: 1024px)", columns: 5, width: 900 },
-  { query: "(min-width: 640px)", columns: 3, width: 520 },
-  { query: "(min-width: 0px)", columns: 2, width: 260 },
-];
 
 export default function HubHome() {
   return (
@@ -95,8 +86,8 @@ export default function HubHome() {
         </span>
       </div>
 
-      <div className="mt-2 h-[520px] overflow-y-auto overflow-x-hidden rounded-xl border border-stone/40 bg-paper/60 p-1 sm:h-[720px] sm:p-2">
-        <PinterestBoardEmbed boardUrl={PINTEREST_BOARD_URL} breakpoints={BOARD_BREAKPOINTS} />
+      <div className="mt-2 h-[520px] overflow-y-auto overflow-x-hidden rounded-xl border border-stone/40 sm:h-[720px]">
+        <PinterestPinGrid boardUrl={PINTEREST_BOARD_URL} />
       </div>
     </main>
   );

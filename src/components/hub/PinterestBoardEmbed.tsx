@@ -3,22 +3,22 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 
-export type Breakpoint = { query: string; columns: number; width: number };
+type Breakpoint = { query: string; columns: number; width: number };
 
 // Pinterest's embedBoard widget lays pins out to fill the pixel width given
 // via data-pin-board-width - there's no official "columns" attribute, so we
 // approximate column counts by picking a width per breakpoint (~230px per
 // pin column at the default thumbnail scale). Tune these if your board's
 // pins render narrower/wider than expected once the real board is live.
-export const DEFAULT_BREAKPOINTS: Breakpoint[] = [
+const BREAKPOINTS: Breakpoint[] = [
   { query: "(min-width: 1024px)", columns: 5, width: 1160 },
   { query: "(min-width: 640px)", columns: 3, width: 700 },
   { query: "(min-width: 0px)", columns: 2, width: 470 },
 ];
 
-function currentBreakpoint(breakpoints: Breakpoint[]): Breakpoint {
-  if (typeof window === "undefined") return breakpoints[0];
-  return breakpoints.find((b) => window.matchMedia(b.query).matches) ?? breakpoints[breakpoints.length - 1];
+function currentBreakpoint(): Breakpoint {
+  if (typeof window === "undefined") return BREAKPOINTS[0];
+  return BREAKPOINTS.find((b) => window.matchMedia(b.query).matches) ?? BREAKPOINTS[BREAKPOINTS.length - 1];
 }
 
 declare global {
@@ -41,25 +41,17 @@ function estimateMaxHeight(rows: number): number {
   return rows * ROW_HEIGHT_ESTIMATE + (rows - 1) * ROW_GAP_ESTIMATE;
 }
 
-export default function PinterestBoardEmbed({
-  boardUrl,
-  previewRows,
-  breakpoints = DEFAULT_BREAKPOINTS,
-}: {
-  boardUrl: string;
-  previewRows?: number;
-  breakpoints?: Breakpoint[];
-}) {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>(breakpoints[0]);
+export default function PinterestBoardEmbed({ boardUrl, previewRows }: { boardUrl: string; previewRows?: number }) {
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>(BREAKPOINTS[0]);
   const [scriptReady, setScriptReady] = useState(false);
 
   useEffect(() => {
-    const update = () => setBreakpoint(currentBreakpoint(breakpoints));
+    const update = () => setBreakpoint(currentBreakpoint());
     update();
-    const mqls = breakpoints.map((b) => window.matchMedia(b.query));
+    const mqls = BREAKPOINTS.map((b) => window.matchMedia(b.query));
     mqls.forEach((mql) => mql.addEventListener("change", update));
     return () => mqls.forEach((mql) => mql.removeEventListener("change", update));
-  }, [breakpoints]);
+  }, []);
 
   useEffect(() => {
     // Re-run Pinterest's widget script against the (re-mounted) anchor below
