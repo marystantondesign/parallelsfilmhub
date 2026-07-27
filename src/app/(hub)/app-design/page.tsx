@@ -3,21 +3,18 @@ import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import PhoneFrame from "@/components/hub/PhoneFrame";
 
 export const metadata: Metadata = {
   title: "App Design — Parallel",
   description: "Screens and visual design for the Parallel app.",
 };
 
-// TODO(app-design): plug in the real destination once it exists. Pick ONE:
-//   1) Image gallery (default): drop screenshots into /public/app-design/
-//      (.png/.jpg/.jpeg/.webp). They're auto-discovered and rendered below —
-//      no code changes needed.
-//   2) External link/embed: set EXTERNAL_DESIGN_URL below to a Figma file
-//      (or other design tool) URL. When set, it's shown as a prominent link;
-//      swap the `<a>` below for an `<iframe src={EXTERNAL_DESIGN_URL} />` if
-//      you'd rather embed it directly.
-const EXTERNAL_DESIGN_URL = "";
+// The live app design prototype - embedded below in a phone-sized frame
+// rather than linked out to, so it reads as a phone screen instead of a
+// browser tab. Drop screenshots into /public/app-design/ instead if you'd
+// rather show a static gallery (auto-discovered, takes priority over this).
+const EXTERNAL_DESIGN_URL = "https://pull-cute-64529839.figma.site";
 
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp"]);
 
@@ -51,14 +48,9 @@ export default function AppDesignPage() {
           ))}
         </div>
       ) : EXTERNAL_DESIGN_URL ? (
-        <a
-          href={EXTERNAL_DESIGN_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-8 inline-flex min-h-11 items-center rounded-xl border border-stone/40 bg-butter px-5 py-3 text-ink transition-colors hover:shadow-[0_6px_20px_-8px_rgba(10,10,10,0.25)]"
-        >
-          Open design file ↗
-        </a>
+        <div className="mt-10">
+          <PhoneFrame src={EXTERNAL_DESIGN_URL} title="Parallel app design" />
+        </div>
       ) : (
         <div className="mt-8 rounded-2xl border border-dashed border-stone/50 px-6 py-10 text-center">
           <p className="text-ink">No screens yet.</p>
