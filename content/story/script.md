@@ -38,19 +38,17 @@ A still room.
 
 Soft summer light filters through open curtains. The air feels warm, slow.
 
-A lava lamp gently shifts on a shelf. Low music crackles faintly from a radio.
+A lava lamp glob shifts on a shelf. Low music crackles faintly from a radio.
 
 The door opens.
 
-MILA (22) enters, casual—sweatpants, oversized tee, slightly disheveled. Not messy, just unbothered by the day.
+MILA (22) enters, casual—sweatpants, oversized tee, slightly disheveled. Not messy, unbothered by the day.
 
 She drops a tote bag near the door.
 
 Crosses to the radio.
 
 Turns the dial—static, fragments of songs—until she finds something she likes.
-
-She nods. Leaves it playing.
 
 Moves to her bed. Flops onto it.
 
@@ -64,8 +62,6 @@ PHONE — PARALLEL APP
 
 Already open.
 
-Familiar.
-
 MILA
 
 Taps directly into a thread.
@@ -74,7 +70,7 @@ CHAT — MILA #8
 
 95% MATCH
 
-Photos in the header: sun, coastline, old stone buildings.
+Profile photo in the header: sun, coastline, old stone buildings.
 
 Mila scrolls.
 
@@ -83,7 +79,6 @@ Fragments of conversation:
 * travel
 * family
 * “I think I’m getting closer to something”
-* “I wish you were here”
 
 She reaches the bottom.
 
@@ -103,17 +98,13 @@ She scrolls.
 
 Stops on another profile.
 
-ROBBIE — Parallel #??
+ROBBIE — Parallel 22
 
 A trans version of herself. Different name. Different energy.
 
 Confident. Soft. Attractive.
 
-Mila lingers.
-
-A tiny smile. Almost subconscious.
-
-She taps.
+Mila lingers then taps.
 
 CHAT — ROBBIE
 
@@ -131,15 +122,15 @@ CALL DECLINED
 
 A message appears:
 
-sorry, can’t right now
+“sorry, can’t do video right now. it’s 2am here. i’m in bed”
 
 Mila stares at it.
 
 A beat.
 
-“Okay.”
+“Okay. Goodnight”
 
-Not upset. Just… a little deflated.
+Not upset. but a little deflated.
 
 She exits.
 
@@ -155,7 +146,7 @@ She scrolls.
 
 Stops on one:
 
-“Robbie — river / night”
+“Robbie sex dream on the river at night”
 
 ❤️ Favorited
 
@@ -163,9 +154,7 @@ Revisited: 3 times
 
 She taps it.
 
-A preview—blurry, atmospheric.
-
-She’s about to enter—
+She’s about to revisit the dream and then
 
 NOTIFICATION — MILA #8
 
@@ -177,17 +166,13 @@ CHAT — MILA #8
 
 New message:
 
-sorry i disappeared for a bit
-been moving around a lot
-i’ve been thinking about you
+sorry i disappeared for a bit, been moving around a lot but i’ve been thinking about you!
 
-Mila lights up—subtle but real.
+Mila lights up, subtle but real.
 
 She types quickly.
 
-no it’s okay
-i’ve been thinking about you too
-what did you find?
+no it’s okay, i’ve been thinking about you too! what did you find?
 
 She sends.
 
