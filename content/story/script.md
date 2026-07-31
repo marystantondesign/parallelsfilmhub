@@ -36,13 +36,13 @@ INT. MILA’S BEDROOM — LATE AFTERNOON
 
 A still room.
 
-Soft summer light filters through open curtains. The air feels warm, slow.
+Soft summer light filters through open curtains. The breeze through the window is slow. Pothos leaves moving slightly. Dust particles linger.
 
 A lava lamp glob shifts on a shelf. Low music crackles faintly from a radio.
 
 The door opens.
 
-MILA (22) enters, casual—sweatpants, oversized tee, slightly disheveled. Not messy, unbothered by the day.
+MILA (22) enters, casual—sweatpants, oversized tee, slightly disheveled. A little messy, unbothered by the day.
 
 She drops a tote bag near the door.
 
@@ -130,7 +130,7 @@ A beat.
 
 “Okay. Goodnight”
 
-Not upset. but a little deflated.
+Not upset, but a little deflated.
 
 She exits.
 
@@ -146,7 +146,7 @@ She scrolls.
 
 Stops on one:
 
-“Robbie sex dream on the river at night”
+“Robbie sex dream by the river”
 
 ❤️ Favorited
 
@@ -166,13 +166,13 @@ CHAT — MILA #8
 
 New message:
 
-sorry i disappeared for a bit, been moving around a lot but i’ve been thinking about you!
+“sorry i disappeared for a bit, been moving around a lot but i’ve been thinking about you!”
 
-Mila lights up, subtle but real.
+Mila lights up.
 
 She types quickly.
 
-no it’s okay, i’ve been thinking about you too! what did you find?
+“girl it’s okay! i’ve been thinking about you too. what did you find?”
 
 She sends.
 
@@ -226,23 +226,20 @@ ECHOES — BETA AVAILABLE
 
 Mila tilts her head slightly.
 
-Curious.
-
 Taps.
 
 ECHOES SCREEN (GLIMPSED)
 
 Text scrolls softly:
 
-a guided experience
-access memory beyond your current lifetime
-visual + tonal induction required
+“A guided experience to access memory beyond your current lifetime—visual + tonal induction required”
 
-Preparation steps flicker past.
+Preparation steps flicker past:
 
-Mila scans.
+“Dim the lights.”
+“Find a quiet space.”
 
-Not overthinking it.
+Mila scans them. Not overthinking it.
 
 INT. BEDROOM — CONTINUOUS
 
@@ -252,9 +249,9 @@ Turns off the radio.
 
 The room goes quiet.
 
-She dims the lights.
+She dims the lights down to 0.
 
-Now just ambient daylight remains.
+Now just ambient daylight remains. She closes the curtains and a tiny bit seeps through.
 
 Her phone BUZZES.
 
@@ -264,25 +261,27 @@ PHONE — TEXT MESSAGE
 
 SISTER
 
-come out tonight??
+“come out tonight??”
 
 Mila types:
 
-can’t, busy
+“can’t, busy”
 
 Typing bubble appears.
 
 SISTER:
 
-lol are you talking to your weird parallel selves again
+“lol are you talking to your weird parallel selves again”
 
 Mila smirks slightly.
 
 Types:
 
-fuck off
+“fuck off”
 
 Sends.
+
+SISTER hearts the message.
 
 Puts the phone down.
 
@@ -290,7 +289,7 @@ BACK TO ECHOES
 
 She lies on her side, back against the wall.
 
-Props the phone nearby, angled toward her.
+Props the phone nearby, screen angled toward her.
 
 Takes a breath.
 
@@ -300,21 +299,17 @@ BEGIN
 
 ECHOES — INDUCTION
 
-A calm voice.
+CALM VOICE
 
-Not overly human. Not robotic. Just… steady.
-
-VOICE
-
-Settle in.
-Allow your body to relax.
+“Settle in. Allow your body to relax.”
 
 Mila closes her eyes.
 
-VOICE (CONT’D)
+The screen reads:
 
-You don’t need to go anywhere.
-You’re already connected.
+“Settle into a comfortable position.
+Allow the room to remain dark and quiet.
+The camera flash and tones will help guide you into a meditative state.”
 
 A pause.
 
@@ -340,37 +335,23 @@ VISION — 1930s PHOTOGRAPHY STUDIO
 
 Dust in sunlight.
 
-Wood floors. Quiet space.
+Wood floors. Quiet, still space.
 
-Mila—another version—adjusts a large camera.
+Mila—another version—adjusts a large camera, sure-handed, at ease in the space.
 
-Focused. Comfortable.
+A lover nearby. Masculine-presenting. Warm. Playful.
 
-A lover nearby.
-
-Masculine-presenting. Warm. playful.
-
-They move easily around each other.
+They move easily around each other, like this has happened a hundred times.
 
 A moment of stillness.
 
-The lover watches Mila.
-
-Smiles.
-
-Steps closer.
+The lover watches her. Smiles. Steps closer.
 
 Encouraging.
 
-Mila resists slightly—hides her face.
+They laugh together.
 
-They laugh.
-
-The lover pulls her gently into frame.
-
-Close.
-
-Too close.
+The lover pulls her gently into frame. Close. Too close.
 
 Mila softens.
 
@@ -386,7 +367,7 @@ CLICK.
 
 The photo is taken.
 
-Mila reacts—playfully shoves them.
+Mila reacts, playfully shoves them.
 
 They laugh.
 
@@ -418,18 +399,13 @@ Opens it.
 
 Starts writing fast.
 
-At the same time—
+Then tosses the notebook and grabs her phone instead.
 
-She taps voice-to-text in the app.
+Parallel app is still opened. She taps voice-to-text in the post-Echoes debrief screen.
 
 Speaking as she writes:
 
-there was dust in the air
-it smelled metallic
-like chemicals
-he tricked me into the photo
-i didn’t want it
-but i didn’t mind
+“there was dust in the air, it smelled metallic, like chemicals. he tricked me into the photo, i didn’t want it but i didn’t mind. it felt like love and safety. i knew all this stuff about my life, but it was different — i was different.”
 
 She pauses.
 
@@ -439,13 +415,11 @@ Her phone BUZZES.
 
 CHAT — MILA #8
 
-i found something today
-a box of old photos
-i think they’re from my family
+“I found something today… a box of old photos of my family that goes way back.”
 
 Another message.
 
-there are so many of them
+“there are so many of them! they’re kinda amazing”
 
 Then—
 
@@ -505,13 +479,9 @@ Another notification.
 
 CHAT — MILA #8
 
-pretty cool right
-i think she’s my great grandmother
-there are like hundreds more
+“pretty cool right? i think she’s my great grandmother. there are like hundreds more but these are my faves”
 
-Then—
-
-A new card appears in the chat.
+Then a new card appears in the chat.
 
 PARALLEL EXCHANGE REQUEST
 
@@ -521,15 +491,11 @@ Duration: 15 minutes
 
 Buttons:
 
-Decline
-Accept
+Decline / Accept
 
 A message appears under it:
 
-i’ve never tried this before
-but i’d love to see new york
-even just for a few minutes
-that bagel place you told me about
+“i’ve never tried this before but i’d love to see new york, even for a few minutes. I could check out that bagel place you told me about by your apt?”
 
 Mila stares.
 
