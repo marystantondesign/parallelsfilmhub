@@ -5,8 +5,8 @@ import type { Metadata } from "next";
 import PhoneFrame from "@/components/hub/PhoneFrame";
 
 export const metadata: Metadata = {
-  title: "App Design — Parallel",
-  description: "Screens and visual design for the Parallel app.",
+  title: "App Design — Parallels",
+  description: "Screens and visual design for the Parallels app.",
 };
 
 // The live app design prototype - embedded below in a phone-sized frame

@@ -4,8 +4,8 @@ import PinterestBoardEmbed from "@/components/hub/PinterestBoardEmbed";
 import { PINTEREST_BOARD_URL } from "@/lib/pinterest";
 
 export const metadata: Metadata = {
-  title: "Moodboard — Parallel",
-  description: "Visual references for Parallel.",
+  title: "Moodboard — Parallels",
+  description: "Visual references for Parallels.",
 };
 
 export default function MoodboardPage() {

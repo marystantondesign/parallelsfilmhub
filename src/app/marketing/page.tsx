@@ -14,9 +14,9 @@ import styles from "./page.module.css";
 //   <iframe src="https://your-marketing-url" className="h-screen w-full border-0" />
 
 export const metadata: Metadata = {
-  title: "Parallel — Meet yourself.",
+  title: "Parallels — Meet yourself.",
   description:
-    "Text, call, and video with verified versions of yourself in neighboring realities. Included with every Parallel account.",
+    "Text, call, and video with verified versions of yourself in neighboring realities. Included with every Parallels account.",
 };
 
 const DIRECTIONS = [

@@ -5,8 +5,8 @@ import { parseSynopsis } from "@/lib/synopsis";
 import { renderInline } from "@/components/hub/inline";
 
 export const metadata: Metadata = {
-  title: "Synopsis — Parallel",
-  description: "The one-page synopsis for Parallel.",
+  title: "Synopsis — Parallels",
+  description: "The one-page synopsis for Parallels.",
 };
 
 function readSynopsis(): string {

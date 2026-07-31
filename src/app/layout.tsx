@@ -8,13 +8,13 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Parallel",
+    default: "Parallels",
     template: "%s",
   },
-  description: "Screenplay, marketing site, and app design for Parallel — best viewed on mobile.",
+  description: "Screenplay, marketing site, and app design for Parallels — best viewed on mobile.",
   openGraph: {
-    title: "Parallel",
-    description: "Screenplay, marketing site, and app design for Parallel — best viewed on mobile.",
+    title: "Parallels",
+    description: "Screenplay, marketing site, and app design for Parallels — best viewed on mobile.",
     type: "website",
   },
   twitter: {

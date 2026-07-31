@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import { extractTitlePage, parseScreenplay } from "@/lib/screenplay";
 
 export const metadata: Metadata = {
-  title: "Script — Parallel",
-  description: "Read the Parallel script.",
+  title: "Script — Parallels",
+  description: "Read the Parallels script.",
 };
 
 function readScreenplay(): string {

@@ -6,8 +6,8 @@ import { parseOutline } from "@/lib/outline";
 import { OutlineArticle } from "@/components/hub/OutlineArticle";
 
 export const metadata: Metadata = {
-  title: "Storyboard — Parallel",
-  description: "Key frames for Parallel, shot by shot.",
+  title: "Storyboard — Parallels",
+  description: "Key frames for Parallels, shot by shot.",
 };
 
 // TODO(storyboard): drop frames into /public/story/storyboard/
